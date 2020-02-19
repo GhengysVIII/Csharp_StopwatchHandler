@@ -7,29 +7,39 @@ public class StopwatchHandler{
     // Container of all StopWatch
     private Dictionary<string,Stopwatch> Stopwatchs = new Dictionary<string,Stopwatch>();
 
-    // this function create a Watch in watch list
-    public void CreateWatch(string key){  
+    // this function create a Watch in Watch list
+    public void CreateWatch(string key){
         if(!Stopwatchs.ContainsKey(key))
         {
            Stopwatchs.Add(key,new Stopwatch());  
+        } else {
+           RemoveWatch(key);
+           Stopwatchs.Add(key,new Stopwatch()); 
         }
     }
     
-    // this function start/continue the count of a watch
+    // this function start/continue the count of a Watch
     public void StartWatch(string key){ 
         if(Stopwatchs.ContainsKey(key)){
             Stopwatchs[key].Start();
         }
     }
     
-    // this function stop the count of a watch
+    // this function stop the count of a Watch
     public void StopWatch(string key){ 
         if(Stopwatchs.ContainsKey(key)){
             Stopwatchs[key].Stop();
         }
     }
     
-    // this function return the time in milliseconds of a watch
+    // this function remove the selected Watch
+    public void RemoveWatch(string key){
+        if(Stopwatchs.ContainsKey(key)){
+            Stopwatchs.Remove(key);
+        }
+    }
+    
+    // this function return the time in milliseconds of a Watch
     public long GetTimeWatch(string key){  
         if(Stopwatchs.ContainsKey(key)){
             return Stopwatchs[key].ElapsedMilliseconds;
