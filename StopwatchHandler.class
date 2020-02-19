@@ -1,0 +1,40 @@
+using System;
+using System.Diagnostics;
+using System.Collections.Generic;
+
+public class StopwatchHandler{
+
+    // Container of all StopWatch
+    private Dictionary<string,Stopwatch> Stopwatchs = new Dictionary<string,Stopwatch>();
+
+    // this function create a Watch in watch list
+    public void CreateWatch(string key){  
+        if(!Stopwatchs.ContainsKey(key))
+        {
+           Stopwatchs.Add(key,new Stopwatch());  
+        }
+    }
+    
+    // this function start/continue the count of a watch
+    public void StartWatch(string key){ 
+        if(Stopwatchs.ContainsKey(key)){
+            Stopwatchs[key].Start();
+        }
+    }
+    
+    // this function stop the count of a watch
+    public void StopWatch(string key){ 
+        if(Stopwatchs.ContainsKey(key)){
+            Stopwatchs[key].Stop();
+        }
+    }
+    
+    // this function return the time in milliseconds of a watch
+    public long GetTimeWatch(string key){  
+        if(Stopwatchs.ContainsKey(key)){
+            return Stopwatchs[key].ElapsedMilliseconds;
+        }
+        return -1;
+    }
+    
+}
