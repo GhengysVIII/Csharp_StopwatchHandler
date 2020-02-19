@@ -8,41 +8,41 @@ public class StopwatchHandler{
     private Dictionary<string,Stopwatch> Stopwatchs = new Dictionary<string,Stopwatch>();
 
     // this function create a Watch in Watch list
-    public void CreateWatch(string key){
-        if(!Stopwatchs.ContainsKey(key))
+    public void CreateWatch(string watchName){
+        if(!Stopwatchs.ContainsKey(watchName))
         {
-           Stopwatchs.Add(key,new Stopwatch());  
+           Stopwatchs.Add(watchName,new Stopwatch());  
         } else {
-           RemoveWatch(key);
-           Stopwatchs.Add(key,new Stopwatch()); 
+           RemoveWatch(watchName);
+           Stopwatchs.Add(watchName,new Stopwatch()); 
         }
     }
     
     // this function start/continue the count of a Watch
-    public void StartWatch(string key){ 
-        if(Stopwatchs.ContainsKey(key)){
-            Stopwatchs[key].Start();
+    public void StartWatch(string watchName){ 
+        if(Stopwatchs.ContainsKey(watchName)){
+            Stopwatchs[watchName].Start();
         }
     }
     
     // this function stop the count of a Watch
-    public void StopWatch(string key){ 
-        if(Stopwatchs.ContainsKey(key)){
-            Stopwatchs[key].Stop();
+    public void StopWatch(string watchName){ 
+        if(Stopwatchs.ContainsKey(watchName)){
+            Stopwatchs[watchName].Stop();
         }
     }
     
     // this function remove the selected Watch
-    public void RemoveWatch(string key){
-        if(Stopwatchs.ContainsKey(key)){
-            Stopwatchs.Remove(key);
+    public void RemoveWatch(string watchName){
+        if(Stopwatchs.ContainsKey(watchName)){
+            Stopwatchs.Remove(watchName);
         }
     }
     
     // this function return the time in milliseconds of a Watch
-    public long GetTimeWatch(string key){  
-        if(Stopwatchs.ContainsKey(key)){
-            return Stopwatchs[key].ElapsedMilliseconds;
+    public long GetTimeWatch(string watchName){  
+        if(Stopwatchs.ContainsKey(watchName)){
+            return Stopwatchs[watchName].ElapsedMilliseconds;
         }
         return -1;
     }
