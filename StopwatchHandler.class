@@ -1,7 +1,3 @@
-using System;
-using System.Diagnostics;
-using System.Collections.Generic;
-
 public class StopwatchHandler{
 
     // Container of all StopWatch
@@ -18,33 +14,39 @@ public class StopwatchHandler{
         }
     }
     
-    // this function start/continue the count of a Watch
+    // this function start/continue the count on a Watch
     public void StartWatch(string watchName){ 
         if(Stopwatchs.ContainsKey(watchName)){
             Stopwatchs[watchName].Start();
         }
     }
     
-    // this function stop the count of a Watch
-    public void StopWatch(string watchName){ 
-        if(Stopwatchs.ContainsKey(watchName)){
-            Stopwatchs[watchName].Stop();
+    // this function stop the count on a Watch
+    public void StopWatch(string key){ 
+        if(Stopwatchs.ContainsKey(key)){
+            Stopwatchs[key].Stop();
+        }
+    }
+    
+    // this function Reset the time on selected Watch
+    public void ResetWatch(string key){
+        if(Stopwatchs.ContainsKey(key)){
+            Stopwatchs[key].Reset();
         }
     }
     
     // this function remove the selected Watch
-    public void RemoveWatch(string watchName){
-        if(Stopwatchs.ContainsKey(watchName)){
-            Stopwatchs.Remove(watchName);
+    public void RemoveWatch(string key){
+        if(Stopwatchs.ContainsKey(key)){
+            Stopwatchs.Remove(key);
         }
     }
     
-    // this function return the time in milliseconds of a Watch
-    public long GetTimeWatch(string watchName){  
-        if(Stopwatchs.ContainsKey(watchName)){
-            return Stopwatchs[watchName].ElapsedMilliseconds;
+    // this function return the time in milliseconds on a Watch
+    public long GetTimeWatch(string key){  
+        if(Stopwatchs.ContainsKey(key)){
+            return Stopwatchs[key].ElapsedMilliseconds;
         }
         return -1;
     }
-    
 }
