@@ -1,3 +1,7 @@
+/// <summary>
+/// Stopwatch Handler is used to manage 
+/// multiple Stopwatches for the time duration management
+/// </summary>
 public class StopwatchHandler{
 
     // Container of all StopWatch
