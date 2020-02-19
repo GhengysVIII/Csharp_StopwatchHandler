@@ -8,6 +8,7 @@ public class StopwatchHandler{
     private Dictionary<string,Stopwatch> Stopwatchs = new Dictionary<string,Stopwatch>();
 
     // this function create a Watch in Watch list
+    public void CreateWatch(int watchNum) { CreateWatch(watchNum.ToString()); }
     public void CreateWatch(string watchName){
         if(!Stopwatchs.ContainsKey(watchName))
         {
@@ -19,6 +20,7 @@ public class StopwatchHandler{
     }
     
     // this function start/continue the count on a Watch
+    public void StartWatch(int watchNum) { StartWatch(watchNum.ToString()); }
     public void StartWatch(string watchName){ 
         if(Stopwatchs.ContainsKey(watchName)){
             Stopwatchs[watchName].Start();
@@ -26,6 +28,7 @@ public class StopwatchHandler{
     }
     
     // this function stop the count on a Watch
+    public void StopWatch(int watchNum) { StopWatch(watchNum.ToString()); }
     public void StopWatch(string key){ 
         if(Stopwatchs.ContainsKey(key)){
             Stopwatchs[key].Stop();
@@ -33,6 +36,7 @@ public class StopwatchHandler{
     }
     
     // this function Reset the time on selected Watch
+    public void ResetWatch(int watchNum) { ResetWatch(watchNum.ToString()); }
     public void ResetWatch(string key){
         if(Stopwatchs.ContainsKey(key)){
             Stopwatchs[key].Reset();
@@ -40,6 +44,7 @@ public class StopwatchHandler{
     }
     
     // this function remove the selected Watch
+    public void RemoveWatch(int watchNum) { RemoveWatch(watchNum.ToString()); }
     public void RemoveWatch(string key){
         if(Stopwatchs.ContainsKey(key)){
             Stopwatchs.Remove(key);
@@ -47,6 +52,7 @@ public class StopwatchHandler{
     }
     
     // this function return the time in milliseconds on a Watch
+    public long GetTimeWatch(int watchNum) { return GetTimeWatch(watchNum.ToString()); }
     public long GetTimeWatch(string key){  
         if(Stopwatchs.ContainsKey(key)){
             return Stopwatchs[key].ElapsedMilliseconds;
