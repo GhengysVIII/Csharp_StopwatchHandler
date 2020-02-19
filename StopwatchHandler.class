@@ -2,45 +2,31 @@
 /// Stopwatch Handler is used to manage 
 /// multiple Stopwatches for the time duration management
 /// </summary>
-public class StopwatchHandler{
+public class StopwatchHandler {
 
     // Container of all StopWatch
-    private Dictionary<string,Stopwatch> Stopwatchs = new Dictionary<string,Stopwatch>();
-
+    private Dictionary<string,MyStopWatch> Stopwatchs;
+    
+    // CTOR
+    public StopwatchHandler(){
+        Stopwatchs = new Dictionary<string,MyStopWatch>();
+    }
+    
+    // indexer of StopWatches
+    public MyStopWatch this[int i] {get => Stopwatchs[i.ToString()];}
+    public MyStopWatch this[string s] { get => Stopwatchs[s]; }
+    
     // this function create a Watch in Watch list
-    public void CreateWatch(int watchNum) { CreateWatch(watchNum.ToString()); }
-    public void CreateWatch(string watchName){
+    public MyStopWatch CreateWatch(int watchNum) { return CreateWatch(watchNum.ToString()); }
+    public MyStopWatch CreateWatch(string watchName){
         if(!Stopwatchs.ContainsKey(watchName))
         {
-           Stopwatchs.Add(watchName,new Stopwatch());  
+           Stopwatchs.Add(watchName,new MyStopWatch());  
         } else {
            RemoveWatch(watchName);
-           Stopwatchs.Add(watchName,new Stopwatch()); 
+           Stopwatchs.Add(watchName,new MyStopWatch()); 
         }
-    }
-    
-    // this function start/continue the count on a Watch
-    public void StartWatch(int watchNum) { StartWatch(watchNum.ToString()); }
-    public void StartWatch(string watchName){ 
-        if(Stopwatchs.ContainsKey(watchName)){
-            Stopwatchs[watchName].Start();
-        }
-    }
-    
-    // this function stop the count on a Watch
-    public void StopWatch(int watchNum) { StopWatch(watchNum.ToString()); }
-    public void StopWatch(string key){ 
-        if(Stopwatchs.ContainsKey(key)){
-            Stopwatchs[key].Stop();
-        }
-    }
-    
-    // this function Reset the time on selected Watch
-    public void ResetWatch(int watchNum) { ResetWatch(watchNum.ToString()); }
-    public void ResetWatch(string key){
-        if(Stopwatchs.ContainsKey(key)){
-            Stopwatchs[key].Reset();
-        }
+        return this[watchName];
     }
     
     // this function remove the selected Watch
@@ -49,14 +35,5 @@ public class StopwatchHandler{
         if(Stopwatchs.ContainsKey(key)){
             Stopwatchs.Remove(key);
         }
-    }
-    
-    // this function return the time in milliseconds on a Watch
-    public long GetTimeWatch(int watchNum) { return GetTimeWatch(watchNum.ToString()); }
-    public long GetTimeWatch(string key){  
-        if(Stopwatchs.ContainsKey(key)){
-            return Stopwatchs[key].ElapsedMilliseconds;
-        }
-        return -1;
     }
 }
