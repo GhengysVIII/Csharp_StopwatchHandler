@@ -3,3 +3,5 @@
 ################################################################################
 
 /.vs
+/Csharp_StopwatchHandler/bin/Debug/netcoreapp3.1
+/Csharp_StopwatchHandler/obj
